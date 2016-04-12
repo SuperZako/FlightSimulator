@@ -1,0 +1,3 @@
+#
+#
+TEST PLANE 1	= data/test_plane.mdl;

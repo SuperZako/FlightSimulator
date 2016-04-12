@@ -1,0 +1,368 @@
+name /TEST PLANE MODEL A/
+	maker /Maker-One/
+
+	length	= 10.5				全長 [m]
+	width 	= 14				全幅 [m]
+	height	= 4.2				全高 [m]
+	x_offset = 2.8				機体最前点から機体基準点までの距離 [m]
+
+	m		= 2880				全備重量 [kg]
+	m0		= 2880				自重 [kg]
+	C.G.	= (0.2, 0, 0)			重心 [m]
+	Ixx/m0	= 1.36				[m2]
+	Iyy/m0	= 2.72				[m2]
+	Izz/m0	= 4.09				[m2]
+	Ixy/m0	= 0.00				[m2]
+	Iyz/m0	= 0.00				[m2]
+	Izx/m0	= 0.00				[m2]
+	
+	eye_point 	= (-1, 0, -1)	視点位置 [m]
+	
+	reference_point = 11
+		(2.8, 0, 0)				// 0 機首
+		(-7.7, 0, 0)			// 1 後端
+		(2.4, 0, -1.7)			// 2 プロペラ上
+		(2.4, 0,  1.7)			// 3 プロペラ下
+		(2.4,  1.7, 0)			// 4 プロペラ右
+		(2.4, -1.7, 0)			// 5 プロペラ左
+		(-0.3,  7, -0.2)		// 6 右翼端
+		(-0.3, -7, -0.2)		// 7 左翼端
+		(-6,  2.8, 0.3)			// 8 右水平尾翼端
+		(-6, -2.8, 0.3)			// 9 左水平尾翼端
+		(-6.7, 0, -2)			// 10 垂直尾翼端
+
+	power_plant = 1
+		thrust_point = (2.4,0,0)			推力着力点 [m]
+		thrust_vector = (1,0,0)				推力ベクトル
+		engine_type /RECIPROCATING_ENGINE/	エンジンタイプ
+		engine_name /Sakae-21/				エンジン名称
+		p_takeoff = 700958					[W] 離昇出力
+		p_max_0 = 618931					[W] 地上公称出力
+		p_max = 708415						[W]	公称出力(1速)	
+		rated_altitude = 4200				[m] 公称高度(1速)
+		blower_shift_altitude = 6000		[m] 2速切替高度
+		p_max_2 = 708415					[W]	公称出力(2速)	
+		rated_altitude_2 = 7000				[m] 公称高度(2速)
+		propepper_name /Hamilton CS-40B/	プロペラ名称
+		diameter = 2.9						直径
+		fm = 0.7							Figure of merit FM
+		epsilon = 0.8						推進効率/理想推進効率
+
+	fuselage = 1
+		blcok_name /fuselage/
+			n = 1						左右個数
+			Ac  = (0,0,0);				重心 [m]
+			length = 10.5;				胴体長 [m]
+			Vfus =		9				胴体体積 [m3]
+			CD*Spi(fus) =	0.22		抵抗係数×前方投影面積 [m2]
+			Spi = 2.5					前方投影面積
+	wing = 1
+		name /wing/						翼名称
+		n = 2							左右枚数
+		S/n = 15.75						3面図投影面積3D面積 [m2]
+		b/n = 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+		k_Ar = 1						有効アスペクト比の補正係数
+		wing_block = 3
+		block_name /inner/
+			S/n	= 6.52						1枚の3D面積 [m2]
+			Ac     = (0.1,1.1,0.4)			空力中心 [m]
+			Gc     = (-0.6,1.1,0.4)			重心 [m]
+			gamma  = 5.5					上反角 [deg]
+			delta  = 2						取付角 [deg]
+			lamda  = 0						後退角 [deg]
+			t/c    = 0.142					翼厚比
+			a0            = 6.98			2次元揚力傾斜
+			alpha0        = -1.4			無揚力角 [deg]
+			CLmax         = 1.7				最大揚力係数
+			delta_CLmax   = 0.4				剥離時揚力係数減少分
+			delta_alpha_p = 2				限界までの仰角増大分 Δα(+) [deg]
+			CLmin         = -1.2			最小揚力係数
+			delta_CLmin   = 0				剥離時揚力係数増加分
+			delta_alpha_m = -2				限界までの仰角減少分 Δα(-) [deg]
+			alpha_i       = 1.03			理想仰角 αI [rad]
+			CDmin         = 0.0063			最小抗力係数
+			k_cd          = 1.2				抗力係数近似放物線の係数 [1/rad2]
+			delta_CDmin   = 0				バケットでの抗力係数減少分
+			alpha_backet  = 0				バケットの範囲 [deg]
+			Cmac          = -0.013			モーメント係数
+			ew            = 0.8				翼幅効率
+			Mc            = 0.7				翼型臨界マッハ数
+		block_name /middle/
+			S/n	= 5.24						1枚の3D面積 [m2]
+			Ac     = (0.1,3.4,0.2)			空力中心 [m]
+			Gc     = (-0.5,3.4,0.2)			重心 [m]
+			gamma  = 5.5					上反角 [deg]
+			delta  = 2						取付角 [deg]
+			lamda  = 0						後退角 [deg]
+			t/c    = 0.142					翼厚比
+			a0            = 6.98			2次元揚力傾斜
+			alpha0        = -1.4			無揚力角 [deg]
+			CLmax         = 1.7				最大揚力係数
+			delta_CLmax   = 0.4				剥離時揚力係数減少分
+			delta_alpha_p = 2				限界までの仰角増大分 Δα(+) [deg]
+			CLmin         = -1.2			最小揚力係数
+			delta_CLmin   = 0				剥離時揚力係数増加分
+			delta_alpha_m = -2				限界までの仰角減少分 Δα(-) [deg]
+			alpha_i       = 1.03			理想仰角 αI [rad]
+			CDmin         = 0.0063			最小抗力係数
+			k_cd          = 1.2				抗力係数近似放物線の係数 [1/rad2]
+			delta_CDmin   = 0				バケットでの抗力係数減少分
+			alpha_backet  = 0				バケットの範囲 [deg]
+			Cmac          = -0.013			モーメント係数
+			ew            = 0.8				翼幅効率
+			Mc            = 0.7				翼型臨界マッハ数
+		block_name /outer/
+			S/n	= 3.96						1枚の3D面積 [m2]
+			Ac     = (0.1,5.7,0)			空力中心 [m]
+			Gc     = (-0.5,5.7,0)			重心 [m]
+			gamma  = 5.5					上反角 [deg]
+			delta  = 2						取付角 [deg]
+			lamda  = 0						後退角 [deg]
+			t/c    = 0.11					翼厚比
+			a0            = 6.82			2次元揚力傾斜
+			alpha0        = -1.4			無揚力角 [deg]
+			CLmax         = 1.7				最大揚力係数
+			delta_CLmax   = 0.4				剥離時揚力係数減少分
+			delta_alpha_p = 2				限界までの仰角増大分 Δα(+) [deg]
+			CLmin         = -1.2			最小揚力係数
+			delta_CLmin   = 0				剥離時揚力係数増加分
+			delta_alpha_m = -2				限界までの仰角減少分 Δα(-) [deg]
+			alpha_i       = 1.03			理想仰角 αI [rad]
+			CDmin         = 0.0063			最小抗力係数
+			k_cd          = 1.2				抗力係数近似放物線の係数 [1/rad2]
+			delta_CDmin   = 0				バケットでの抗力係数減少分
+			alpha_backet  = 0				バケットの範囲 [deg]
+			Cmac          = -0.013			モーメント係数
+			ew            = 0.8				翼幅効率
+			Mc            = 0.7				翼型臨界マッハ数
+	htail = 1
+		name /htail/						翼名称
+		n = 2							左右枚数
+		S/n = 3.5							1枚の3面図投影面積3D面積 [m2]
+		b/n = 2.8 2.8 2.8 2.8 2.8 2.8 2.8 2.8 2.8 2.8 2.8 2.8 2.8 2.8 2.8 2.8 2.8 2.8 2.8  
+		k_Ar = 1						有効アスペクト比の補正係数
+		wing_block = 1
+		block_name /htail/
+			S/n	= 3.5						1枚の3D面積 [m2]
+			Ac     = (-5.5,1.1,-0.2)		空力中心 [m]
+			Gc     = (-5.9,1.1,-0.2)		重心 [m]
+			gamma  = 0						上反角 [deg]
+			delta  = -1						取付角 [deg]
+			lamda  = 13						後退角 [deg]
+			t/c    = 0.10					翼厚比
+			a0            = 6.82			2次元揚力傾斜
+			alpha0        = 0				無揚力角 [deg]
+			CLmax         = 1.7				最大揚力係数
+			delta_CLmax   = 0.4				剥離時揚力係数減少分
+			delta_alpha_p = 2				限界までの仰角増大分 Δα(+) [deg]
+			CLmin         = -1.7			最小揚力係数
+			delta_CLmin   = 0.4				剥離時揚力係数増加分
+			delta_alpha_m = -2				限界までの仰角減少分 Δα(-) [deg]
+			alpha_i       = 0				理想仰角 αI [rad]
+			CDmin         = 0.0063			最小抗力係数
+			k_cd          = 1.2				抗力係数近似放物線の係数 [1/rad2]
+			delta_CDmin   = 0				バケットでの抗力係数減少分
+			alpha_backet  = 0				バケットの範囲 [deg]
+			Cmac          = 0				モーメント係数
+			ew            = 0.8				翼幅効率
+			Mc            = 0.7				翼型臨界マッハ数
+	canard = 0
+	vtail = 1
+		name /vtail/						翼名称
+		n	= 1							左右枚数
+		S/n = 3.2						1枚の3面図投影面積3D面積 [m2]
+		b/n = 1.8 1.8 1.8 1.8 1.8 1.8 1.8 1.8 1.8 1.8 1.8 1.8 1.8 1.8 1.8 1.8 1.8 1.8 1.8 
+		k_Ar = 1.55						有効アスペクト比の補正係数
+		wing_block = 1
+		block_name /vtail/
+			S/n	= 3.2						1枚の3D面積 [m2]
+			Ac     = (-6,0,-1)				空力中心 [m]
+			Gc     = (-6.4,0,-1)		重心 [m]
+			gamma  = 0						上反角 [deg]
+			delta  = 0						取付角 [deg]
+			lamda  = 28						後退角 [deg]
+			t/c    = 0.065					翼厚比
+			a0            = 6.82			2次元揚力傾斜
+			alpha0        = 0				無揚力角 [deg]
+			CLmax         = 1.7				最大揚力係数
+			delta_CLmax   = 0.4				剥離時揚力係数減少分
+			delta_alpha_p = 2				限界までの仰角増大分 Δα(+) [deg]
+			CLmin         = -1.7			最小揚力係数
+			delta_CLmin   = 0.4				剥離時揚力係数増加分
+			delta_alpha_m = -2				限界までの仰角減少分 Δα(-) [deg]
+			alpha_i       = 0				理想仰角 αI [rad]
+			CDmin         = 0.0063			最小抗力係数
+			k_cd          = 1.2				抗力係数近似放物線の係数 [1/rad2]
+			delta_CDmin   = 0				バケットでの抗力係数減少分
+			alpha_backet  = 0				バケットの範囲 [deg]
+			Cmac          = 0				モーメント係数
+			ew            = 0.8				翼幅効率
+			Mc            = 0.7				翼型臨界マッハ数
+	fin = 0
+	elevator = 1
+		type	/tailing_edge/			操舵翼面タイプ
+		actuate_type /direct_link/		作動タイプ
+		block_name /elevator/
+			S/n	= 2.65						1枚の3D面積 [m2]
+			Ac     = (-5.6,1.1,-0.2)		空力中心 [m]
+			Gc     = (-5.9,1.1,-0.2)		重心 [m]
+			gamma  = 0						上反角 [deg]
+			delta  = 0						取付角 [deg]
+			lamda  = 0						後退角 [deg]
+			t/c    = 0.10					翼厚比
+			a0            = 6.82			2次元揚力傾斜
+			alpha0        = 0				無揚力角 [deg]
+			CLmax         = 1.7				最大揚力係数
+			delta_CLmax   = 0.4				剥離時揚力係数減少分
+			delta_alpha_p = 2				限界までの仰角増大分 Δα(+) [deg]
+			CLmin         = -1.7			最小揚力係数
+			delta_CLmin   = 0.4				剥離時揚力係数増加分
+			delta_alpha_m = -2				限界までの仰角減少分 Δα(-) [deg]
+			alpha_i       = 0				理想仰角 αI [rad]
+			CDmin         = 0.0063			最小抗力係数
+			k_cd          = 1.2				抗力係数近似放物線の係数 [1/rad2]
+			delta_CDmin   = 0				バケットでの抗力係数減少分
+			alpha_backet  = 0				バケットの範囲 [deg]
+			Cmac          = 0				モーメント係数
+			ew            = 0.8				翼幅効率
+			Mc            = 0.7				翼型臨界マッハ数
+		delta_max = 20					最大舵角[deg](下)
+		delta_min = -30					最小舵角[deg](上)
+		lamda_H = 0						ヒンジ後退角[deg]
+		flap /plane_flap/				フラップ形式
+		cf/c = 0.25						フラップ弦長比
+		dCLmax = 1.0					最大揚力係数の増加分
+	canaer_elevator = 0
+	aileron = 1
+		type	/tailing_edge/			操舵翼面タイプ
+		actuate_type /direct_link/		作動タイプ
+		block_name /aileron/
+			S/n	= 7.215						1枚の3D面積 [m2]
+			Ac     = (0.1,4.5,0.1)		空力中心 [m]
+			Gc     = (-0.4,4.5,0.1)		重心 [m]
+			gamma  = 5.5						上反角 [deg]
+			delta  = 2						取付角 [deg]
+			lamda  = 0						後退角 [deg]
+			t/c    = 0.11					翼厚比
+			a0            = 6.98			2次元揚力傾斜
+			alpha0        = -1.4			無揚力角 [deg]
+			CLmax         = 1.7				最大揚力係数
+			delta_CLmax   = 0.4				剥離時揚力係数減少分
+			delta_alpha_p = 2				限界までの仰角増大分 Δα(+) [deg]
+			CLmin         = -1.2			最小揚力係数
+			delta_CLmin   = 0				剥離時揚力係数増加分
+			delta_alpha_m = -2				限界までの仰角減少分 Δα(-) [deg]
+			alpha_i       = 1.03			理想仰角 αI [rad]
+			CDmin         = 0.0063			最小抗力係数
+			k_cd          = 1.2				抗力係数近似放物線の係数 [1/rad2]
+			delta_CDmin   = 0				バケットでの抗力係数減少分
+			alpha_backet  = 0				バケットの範囲 [deg]
+			Cmac          = -0.013			モーメント係数
+			ew            = 0.8				翼幅効率
+			Mc            = 0.7				翼型臨界マッハ数
+		delta_max = 20					最大舵角[deg](下)
+		delta_min = -30					最小舵角[deg](上)
+		lamda_H = 0						ヒンジ後退角[deg]
+		flap /plane_flap/				フラップ形式
+		cf/c = 0.15						フラップ弦長比
+		dCLmax = 1.0					最大揚力係数の増加分
+	rudder = 1
+		type	/tailing_edge/			操舵翼面タイプ
+		actuate_type /direct_link/		作動タイプ
+		block_name /rudder/
+			S/n	= 3.2						1枚の3D面積 [m2]
+			Ac     = (-6,0,-1.1)			空力中心 [m]
+			Gc     = (-6.4,0,-1.1)			重心 [m]
+			gamma  = 0						上反角 [deg]
+			delta  = 0						取付角 [deg]
+			lamda  = 28						後退角 [deg]
+			t/c    = 0.065					翼厚比
+			a0            = 6.82			2次元揚力傾斜
+			alpha0        = 0				無揚力角 [deg]
+			CLmax         = 1.7				最大揚力係数
+			delta_CLmax   = 0.4				剥離時揚力係数減少分
+			delta_alpha_p = 2				限界までの仰角増大分 Δα(+) [deg]
+			CLmin         = -1.7			最小揚力係数
+			delta_CLmin   = 0.4				剥離時揚力係数増加分
+			delta_alpha_m = -2				限界までの仰角減少分 Δα(-) [deg]
+			alpha_i       = 0				理想仰角 αI [rad]
+			CDmin         = 0.0063			最小抗力係数
+			k_cd          = 1.2				抗力係数近似放物線の係数 [1/rad2]
+			delta_CDmin   = 0				バケットでの抗力係数減少分
+			alpha_backet  = 0				バケットの範囲 [deg]
+			Cmac          = 0				モーメント係数
+			ew            = 0.8				翼幅効率
+			Mc            = 0.7				翼型臨界マッハ数
+		delta_max = 33					最大舵角[deg](下)
+		delta_min = -33					最小舵角[deg](上)
+		lamda_H = 0						ヒンジ後退角[deg]
+		flap /plane_flap/				フラップ形式
+		cf/c = 0.38						フラップ弦長比
+		dCLmax = 1.0					最大揚力係数の増加分
+	t_flap = 1
+		type	/tailing_edge/			操舵翼面タイプ
+		actuate_type /actuator_drive/	作動タイプ
+		block_name /flap/
+			S/n	= 6.52						1枚の3D面積 [m2]
+			Ac     = (0.1,1.6,-0.3)			空力中心 [m]
+			Gc     = (-0.6,1.6,-0.3)		重心 [m]
+			gamma  = 0 5.5					上反角 [deg]
+			delta  = 0 2						取付角 [deg]
+			lamda  = 0						後退角 [deg]
+			t/c    = 0.142					翼厚比
+			a0            = 6.98			2次元揚力傾斜
+			alpha0        = -1.4			無揚力角 [deg]
+			CLmax         = 1.7				最大揚力係数
+			delta_CLmax   = 0.4				剥離時揚力係数減少分
+			delta_alpha_p = 2				限界までの仰角増大分 Δα(+) [deg]
+			CLmin         = -1.2			最小揚力係数
+			delta_CLmin   = 0				剥離時揚力係数増加分
+			delta_alpha_m = -2				限界までの仰角減少分 Δα(-) [deg]
+			alpha_i       = 1.03			理想仰角 αI [rad]
+			CDmin         = 0.0063			最小抗力係数
+			k_cd          = 1.2				抗力係数近似放物線の係数 [1/rad2]
+			delta_CDmin   = 0				バケットでの抗力係数減少分
+			alpha_backet  = 0				バケットの範囲 [deg]
+			Cmac          = -0.013			モーメント係数
+			ew            = 0.8				翼幅効率
+			Mc            = 0.7				翼型臨界マッハ数
+		delta_max = 60					最大舵角[deg](下)
+		delta_min = 0					最小舵角[deg](上)
+		lamda_H = 0						ヒンジ後退角[deg]
+		flap /split_flap/				フラップ形式
+		cf/c = 0.22						フラップ弦長比
+		dCLmax = 1.0					最大揚力係数の増加分
+		t_moving = 3				[s]	展開/格納時間
+	l_flap = 0
+	landing_gear = 2
+		block_name /main_gear/
+			n =	2
+			p0_base	= (0.6,2,2.2)	[m]		車輪接地基準点
+			stroke	= 0.075			[m]		静荷重時のストローク
+			w = 1108				[kg]	静荷重
+			r = 0.3					[m]		タイヤ半径
+			Tb_max = 3200			[N・m]	ブレーキ最大トルク
+			CD*S =	0.08			[m2]	抵抗係数×代表面積 [m2]
+			pa0_base = (0.6,0.7,0.5)[m]		脚出し時の空力着力点
+			pa1_base = (0.6,2,1.8)	[m]		脚格納時の空力着力点
+			t_moving = 3			[s]		脚出し/格納時間
+			t_lag_right = 0			[s]		右の作動開始遅れ時間
+			t_lag_left = 2			[s]		左の作動開始遅れ時間(左右ない場合でも要記述)
+		block_name /sub_gear/
+			n =	1
+			p0_base	= (-7.1,0,0.5)	[m]		車輪接地基準点
+			stroke	= 0.03			[m]		静荷重時のストローク
+			w = 253					[kg]	静荷重
+			r = 0.15				[m]		タイヤ半径
+			Tb_max = 0				[N・m]	ブレーキ最大トルク
+			CD*S =	0.009			[m2]	抵抗係数×代表面積 [m2]
+			pa0_base = (-7,0,0.3)	[m]		脚出し時の空力着力点
+			pa1_base = (-7,0,0.1)	[m]		脚格納時の空力着力点
+			t_moving = 3			[s]		脚出し/格納時間
+			t_lag_right = 0			[s]		右の作動開始遅れ時間
+			t_lag_left = 0			[s]		左の作動開始遅れ時間(左右ない場合でも要記述)
+
+	k_SVtail_Wing_stall(alpha) = 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+	k_SVtail_Htail_stall(alpha) = 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1
+
+ 

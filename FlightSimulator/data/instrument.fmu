@@ -1,0 +1,87 @@
+#-----------------------------------------------
+# ピッチ表示用のミニチュアエアクラフト
+#
+FORM_UNIT PITCH_MINIATURE_ARECRAFT
+	DEPTH_SORT OFF
+	SCALE 0.5
+	VERTEX {
+		v0=(2,0,0); v1=(-1,0,0); v2=(-2,0,0); v3=(-1.7320504,1,0);
+	}
+	LINE 0 v0 v2 ;
+	LINE 0 v1 v3 ;
+FORM_END
+#-----------------------------------------------
+# ロール表示用のミニチュアエアクラフト
+#
+FORM_UNIT ROLL_MINIATURE_ARECRAFT
+	DEPTH_SORT OFF
+	SCALE 0.5
+	VERTEX {
+		v0=(0,0,0); v1=(-2,0,0); v2=(2,0,0); v3=(0,1,0);
+	}
+	LINE 0 v1 v2 ;
+	LINE 0 v0 v3 ;
+FORM_END
+#-----------------------------------------------
+# ヘディング表示用のミニチュアエアクラフト
+#
+FORM_UNIT HEADING_MINIATURE_ARECRAFT
+	DEPTH_SORT OFF
+	SCALE 0.5
+	VERTEX {
+		v0=(0,-2,0); v1=(-1.41421356,1.41421356,0);
+		v2=(1.41421356,1.41421356,0);
+	}
+	LINE 0 v0 v1 ;
+	LINE 0 v0 v2 ;
+FORM_END
+#-----------------------------------------------
+# 速度ベクトル
+#
+FORM_UNIT VELOCITY_VECTOR
+	DEPTH_SORT OFF
+	SCALE 5
+	VERTEX {
+		v0=(-2,0,0); v1=(-1,0,0); v2=(1,0,0); v3=(2,0,0);
+		v4=(0,1,0); v5=(0,-1,0);
+	}
+	LINE 0 v0 v1 ;
+	LINE 0 v2 v3 ;
+	LINE 0 v1 v4 ;
+	LINE 0 v4 v2 ;
+	LINE 0 v1 v5 ;
+	LINE 0 v5 v2 ;
+FORM_END
+#-----------------------------------------------
+# 人口水平線
+#
+FORM_UNIT ARTIFICIAL_HORIZON
+	DEPTH_SORT OFF
+	SCALE 1
+	VERTEX {
+		v1=(-0.2, -1.7364, 9.8481);	v2=(0.2, -1.7364, 9.8481);
+		v3=(-0.1, -0.8716, 9.9619);	v4=(0.1, -0.8716, 9.9619);
+		v5=(-1, 0, 10);	v6=(-0.5, 0, 10); v11=(0.5,0,10); v12=(1,0,10);
+		v7=(-0.1, 0.8716, 9.9619);	v8=(0.1, 0.8716, 9.9619);
+		v9=(-0.2, 1.7364, 9.8481);	v10=(0.2, 1.7364, 9.8481);
+	}
+	LINE 0 v1 v2 ;
+	LINE 0 v3 v4 ;
+	LINE 0 v5 v6 ;
+	LINE 0 v7 v8 ;
+	LINE 0 v9 v10 ;
+	LINE 0 v11 v12 ;
+FORM_END
+#-----------------------------------------------
+# 機体前方
+#
+FORM_UNIT FRONT_POINT
+	DEPTH_SORT OFF
+	SCALE 5
+	VERTEX {
+		v0=(-3,0,0);	v1=(3,0,0);
+		v2=(0,-3,0);	v3=(0,3,0);
+	}
+	LINE 0 v0 v1 ;
+	LINE 0 v2 v3 ;
+FORM_END
